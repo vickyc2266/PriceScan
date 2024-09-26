@@ -11,6 +11,16 @@ struct Location: Identifiable, Codable, Comparable {
   
   var id = UUID()  // to conform to Identifiable protocol
   // Additional properties, etc.
+  var storeName: String
+  var scans: [PriceScan]
+  
+  enum CodingKeys: String, CodingKey {
+    case id
+    case storeName = "location"
+    case scans
+  }
+  
+  
   
   
   
@@ -24,10 +34,11 @@ struct Location: Identifiable, Codable, Comparable {
   
   // To conform to Comparable protocol
   static func < (lhs: Location, rhs: Location) -> Bool {
-    
+    return lhs.storeName < rhs.storeName
   }
   
   static func == (lhs: Location, rhs: Location) -> Bool {
+    return lhs.id == rhs.id
     
   }
   
