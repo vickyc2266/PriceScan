@@ -7,10 +7,11 @@
 import SwiftUI
 
 struct ScanListView: View {
+  let locationScans = Bundle.main.decode([Location].self, from: "scan_api_data.json").sorted(by: { $0 < $1 })
     
   var body: some View {
     
-    let locationScans = Bundle.main.decode([Location].self, from: "scan_api_data.json").sorted(by: { $0 < $1 })
+//    let locationScans = Bundle.main.decode([Location].self, from: "scan_api_data.json").sorted(by: { $0 < $1 })
   
     NavigationView {
       List {

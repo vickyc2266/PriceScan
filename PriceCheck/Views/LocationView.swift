@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 struct LocationView: View {
-  let location = Location 
+  let location: Location
   
   var body: some View {
     Section(header: Text(location.storeName)) {
-      forEach(location.scan.sorted(by: {$0 < $1})) {
+      ForEach(location.scans.sorted(by: {$0 < $1})) {
         scan in ScanView(scan: scan)
       }
     }
